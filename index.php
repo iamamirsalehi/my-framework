@@ -1,4 +1,3 @@
 <?php
 
-
-echo $_SERVER['REQUEST_URI'];
+include 'bootstrap/init.php';
