@@ -1,0 +1,10 @@
+{
+    "name": "amir/framework.php",
+    "authors": [
+        {
+            "name": "Amir Salehi",
+            "email": "isamirsalehi@gmail.com"
+        }
+    ],
+    "require": {}
+}
