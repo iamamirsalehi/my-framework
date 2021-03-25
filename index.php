@@ -6,4 +6,4 @@ include 'bootstrap/init.php';
 
 $request = new Request();
 
-dd($request->name);
+dd($request->uri);

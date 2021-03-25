@@ -13,6 +13,8 @@ class Request
 
     private $method;
     
+    private $uri;
+
     public function __construct()
     {
         $this->params = $_REQUEST;
@@ -22,6 +24,8 @@ class Request
         $this->method = $_SERVER['REQUEST_METHOD'];
 
         $this->ip     = $_SERVER['REMOTE_ADDR'];
+
+        $this->uri    = strtok($_SERVER['REQUEST_URI'], '?');
     }
 
     /**
@@ -78,6 +82,16 @@ class Request
     }
 
     /**
+     * Get the current URI
+     * 
+     * @return string
+     */
+    public function uri()
+    {
+        return $this->uri;
+    }
+
+    /**
      * Get the specific parameter without calling input method
      *
      * @param string $name
@@ -85,6 +99,11 @@ class Request
      */
     public function __get($name)
     {
-        return $this->input($name);
+        if(!is_null($this->input($name)))
+            return $this->input($name);
+        
+        if(method_exists($this, $name))
+            return $this->{$name}();
+
     }
 }
