@@ -57,10 +57,34 @@ class Request
     /**
      * Get the sent request user browser data
      *
-     * @return array
+     * @return string
      */
     public function agent()
     {
         return $this->agent;
+    }
+
+
+    /**
+     * Get the specific value of parameters
+     * 
+     * @return string
+     */
+    public function input($key)
+    {
+        if(array_key_exists($key, $this->params))
+            return $this->params[$key];
+        return null;
+    }
+
+    /**
+     * Get the specific parameter without calling input method
+     *
+     * @param string $name
+     * @return string
+     */
+    public function __get($name)
+    {
+        return $this->input($name);
     }
 }
