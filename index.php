@@ -7,4 +7,4 @@ include 'bootstrap/init.php';
 
 $request = new Request();
 
-var_dump($request);
+dd($request);
