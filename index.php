@@ -1,9 +1,11 @@
 <?php
 
 use App\Core\Request;
+use App\Core\Routing\Router;
 
 include 'bootstrap/init.php';
 
-$request = new Request();
+$router = new Router();
 
-dd($request->uri);
+
+dd($router->findCurrentRoute($request));
