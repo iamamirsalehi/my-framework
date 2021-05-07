@@ -23,17 +23,32 @@ class Router
         $this->current_route = $this->findCurrentRoute($this->request);
     }
 
-    public function findCurrentRoute(Request $request)
+    private function findCurrentRoute(Request $request)
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] == $request->uri() and in_array($request->method(), $route['methods'])) {
                 return $route;
-            }else{
-                die('404');
             }
         }
 
         return null;
+    }
+
+    public function run()
+    {
+
+    }
+
+    private function dispatch405()
+    {
+        header("HTTP/1.0 404 Not Found");
+        echo "PHP continues.\n";
+        die();
+    }
+
+    private function dispatch404()
+    {
+
     }
 
 }
