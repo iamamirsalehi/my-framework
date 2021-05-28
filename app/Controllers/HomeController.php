@@ -8,6 +8,10 @@ class HomeController
 {
     public function index()
     {
-        view('admin.articles.index');
+        $data = [
+            'mooooz' => 'amir',
+        ];
+
+        view('admin.articles.index', $data);
     }
 }

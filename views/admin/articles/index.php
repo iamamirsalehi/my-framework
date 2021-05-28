@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+
+<?= $mooooz ?>
 <h2>hey</h2>
 </body>
 </html>

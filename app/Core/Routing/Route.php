@@ -6,39 +6,39 @@ class Route
 {
     private static $routes = [];
 
-    public static function add(string|array $method, $uri, string|callable $action)
+    public static function add(string|array $method, $uri, string|callable $action, $middleware = [])
     {
-        self::$routes[] = ['methods' => !is_array($method) ? [$method] : $method, 'uri' => $uri, 'action' => $action];
+        self::$routes[] = ['methods' => !is_array($method) ? [$method] : $method, 'uri' => $uri, 'action' => $action, 'middleware' => $middleware];
     }
 
-    public static function get(string $uri, string|callable $action)
+    public static function get(string $uri, string|callable $action, $middleware = [])
     {
-        self::add('get', $uri, $action);
+        self::add('get', $uri, $action, $middleware);
     }
 
-    public static function post(string $uri, string|callable $action)
+    public static function post(string $uri, string|callable $action, $middleware = [])
     {
-        self::add('post', $uri, $action);
+        self::add('post', $uri, $action, $middleware);
     }
 
-    public static function put(string $uri, string|callable $action)
+    public static function put(string $uri, string|callable $action, $middleware = [])
     {
-        self::add('put', $uri, $action);
+        self::add('put', $uri, $action, $middleware);
     }
 
-    public static function patch(string $uri, string|callable $action)
+    public static function patch(string $uri, string|callable $action, $middleware = [])
     {
-        self::add('patch', $uri, $action);
+        self::add('patch', $uri, $action, $middleware);
     }
 
-    public static function delete(string $uri, string|callable $action)
+    public static function delete(string $uri, string|callable $action, $middleware = [])
     {
-        self::add('delete', $uri, $action);
+        self::add('delete', $uri, $action, $middleware);
     }
 
-    public static function options(string $uri, string $action)
+    public static function options(string $uri, string|callable $action, $middleware = [])
     {
-        self::add('options', $uri, $action);
+        self::add('options', $uri, $action, $middleware);
     }
 
     public static function getRoutes()
